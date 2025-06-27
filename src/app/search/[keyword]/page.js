@@ -2,23 +2,23 @@
 import AnimeList from "@/components/AnimeList"
 import Header from "@/components/AnimeList/Header"
 
-const Home = async() => {
+const Page = async({params}) => {
+    const {keyword} = params
   // Fetching data pada enpoint yang ada di file.env
   // await: Menunggu respons fetch selesai, karena fetch adalah operasi asynchronous (berjalan di latar belakang). Harus digunakan di dalam async function.
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=8`)
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${keyword}`)
   // response.json(): Mengambil isi respons dari fetch dan mengubahnya menjadi objek JavaScript dari format JSON.
-  const topAnime = await response.json()
+  const searchAnime = await response.json()
 
   return (
     <div>
-      {/* Section Paling Populer */}
-      <section>  
-        <Header title="Paling Populer" linkTitle="Lihat Semua" linkHref="/populer" />
+      <section>     
+        <Header title={`Pencarian untuk ${keyword}`}/>
         {/* Mengirim data API ke AnimeList */}
-        <AnimeList api={topAnime}/> 
+        <AnimeList api={searchAnime}/> 
       </section>
     </div>
   )
 }
 
-export default Home
+export default Page
