@@ -14,14 +14,20 @@ const InputSearch = () => {
         if(event.key === "Enter") {
             event.preventDefault()
             const keyword = searchRef.current.value
-            routerPush.push(`/search/${keyword}`)
+            if (keyword === '') {
+                routerPush.push(`/notfound.js`)
             }
+            routerPush.push(`/search/${keyword}`)
+        }
     }
-
+    
     const searchHandler = (event) => {
         event.preventDefault()
         // Mengambil inputan dan menyimpannya sebagai nilai
         const keyword = searchRef.current.value
+        if (keyword === '') {
+            routerPush.push(`/notfound.js`)
+        }
         // Navigasi ke halaman /search/[keyword]
         routerPush.push(`/search/${keyword}`)
     }
