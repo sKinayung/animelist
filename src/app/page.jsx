@@ -1,13 +1,10 @@
 // Mengimpor komponen AnimeList dari file animeList.js (atau .tsx) yang berada di direktori: app/components
 import AnimeList from "@/components/AnimeList"
 import Header from "@/components/AnimeList/Header"
+import { getAnimeResources } from "./libs/api-libs"
 
-const Home = async() => {
-  // Fetching data pada enpoint yang ada di file.env
-  // await: Menunggu respons fetch selesai, karena fetch adalah operasi asynchronous (berjalan di latar belakang). Harus digunakan di dalam async function.
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=8`)
-  // response.json(): Mengambil isi respons dari fetch dan mengubahnya menjadi objek JavaScript dari format JSON.
-  const topAnime = await response.json()
+const Page = async() => {
+  const topAnime = await getAnimeResources("top/anime", "limit=8")
 
   return (
     <div>
@@ -21,4 +18,4 @@ const Home = async() => {
   )
 }
 
-export default Home
+export default Page
