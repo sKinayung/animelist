@@ -1,5 +1,5 @@
 // Mengimpor komponen AnimeList dari file animeList.js (atau .tsx) yang berada di direktori: app/components
-import { getAnimeResources } from "@/app/libs/api-libs"
+import { getAnimeResources } from "@/libs/api-libs"
 import AnimeList from "@/components/AnimeList"
 import Header from "@/components/AnimeList/Header"
 

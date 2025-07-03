@@ -1,7 +1,7 @@
 import VideoPlayer from "@/components/Utilities/VideoPlayer"
 import Image from "next/image"
 
-const { getAnimeResources } = require("@/app/libs/api-libs")
+const { getAnimeResources } = require("@/libs/api-libs")
 
 const Page = async ({params : {id}}) => {
     const anime = await getAnimeResources(`anime/${id}`)

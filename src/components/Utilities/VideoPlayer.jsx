@@ -16,6 +16,9 @@ const VideoPlayer = ({ youtubeId }) => {
     }
 
     const Player = () => {
+        if (youtubeId=== null) {
+            return null
+        }
         return (
             <div className="fixed bottom-2 right-2">
                 <button
@@ -35,6 +38,9 @@ const VideoPlayer = ({ youtubeId }) => {
     }
 
     const ButtonOpenPlayer = () => {
+        if (youtubeId=== null) {
+            return null
+        }
         return (
             <button
                 onClick={handleVideoPlayer}
